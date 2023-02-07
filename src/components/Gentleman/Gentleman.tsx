@@ -8,7 +8,7 @@ interface GentlemanProps {
 
 const GentlemanCard: FC<GentlemanProps> = ({ gentleman }) => {
   return (
-    <li className="gentleman">
+    <li className={`gentleman ${gentleman.selected ? 'selected' : ''}`}>
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
