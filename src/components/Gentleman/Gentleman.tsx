@@ -4,11 +4,20 @@ import './Gentleman.css';
 
 interface GentlemanProps {
   gentleman: Gentleman;
+  onSelect: (id: number) => void;
+  onRemove: (id: number) => void;
 }
 
-const GentlemanCard: FC<GentlemanProps> = ({ gentleman }) => {
+const GentlemanCard: FC<GentlemanProps> = ({
+  gentleman,
+  onSelect,
+  onRemove,
+}) => {
   return (
-    <li className={`gentleman ${gentleman.selected ? 'selected' : ''}`}>
+    <li
+      onClick={() => onSelect(gentleman.id)}
+      className={`gentleman ${gentleman.selected ? 'selected' : ''}`}
+    >
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
@@ -37,7 +46,13 @@ const GentlemanCard: FC<GentlemanProps> = ({ gentleman }) => {
         </ul>
       </div>
       <i className="icon gentleman__icon fas fa-check"></i>
-      <i className="icon gentleman__icon gentleman__icon--delete fas fa-times"></i>
+      <i
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemove(gentleman.id);
+        }}
+        className="icon gentleman__icon gentleman__icon--delete fas fa-times"
+      ></i>
     </li>
   );
 };

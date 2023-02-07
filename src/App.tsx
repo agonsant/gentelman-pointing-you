@@ -17,6 +17,22 @@ function App() {
     updateGentlemen(allGentlemenSelected);
   };
 
+  const selectGentleman = (id: number) => {
+    const gentlemanIndex = currentGentlemen.findIndex(
+      (gentleman) => gentleman.id === id
+    );
+    currentGentlemen[gentlemanIndex].selected = true;
+    updateGentlemen([...currentGentlemen]);
+  };
+
+  const removeGentleman = (id: number) => {
+    const gentlemanIndex = currentGentlemen.findIndex(
+      (gentleman) => gentleman.id === id
+    );
+    currentGentlemen.splice(gentlemanIndex, 1);
+    updateGentlemen([...currentGentlemen]);
+  };
+
   return (
     <div className="container">
       <header className="main-header">
@@ -31,7 +47,12 @@ function App() {
       <main className="main">
         <ul className="gentlemen">
           {currentGentlemen.map((gentleman) => (
-            <GentlemanCard key={gentleman.id} gentleman={gentleman} />
+            <GentlemanCard
+              key={gentleman.id}
+              gentleman={gentleman}
+              onSelect={selectGentleman}
+              onRemove={removeGentleman}
+            />
           ))}
         </ul>
       </main>
