@@ -1,5 +1,6 @@
-import "./App.css";
-import Gentleman from "./components/Gentleman/Gentleman";
+import './App.css';
+import GentlemanCard from './components/Gentleman/Gentleman';
+import { gentlemen } from './data/gentlemen';
 
 function App() {
   return (
@@ -13,12 +14,9 @@ function App() {
       </section>
       <main className="main">
         <ul className="gentlemen">
-          <Gentleman />
-          <Gentleman />
-          <Gentleman />
-          <Gentleman />
-          <Gentleman />
-          <Gentleman />
+          {gentlemen.map((gentleman) => (
+            <GentlemanCard key={gentleman.id} gentleman={gentleman} />
+          ))}
         </ul>
       </main>
     </div>
