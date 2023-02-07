@@ -9,7 +9,7 @@ export const gentlemen: Gentleman[] = [
     twitter: '@osbourne',
     picture: 'bertin.jpg',
     alternativeText: 'Osbourne pointing at you',
-    selected: true,
+    selected: false,
   },
   {
     id: 2,
@@ -29,6 +29,6 @@ export const gentlemen: Gentleman[] = [
     twitter: '@julius_churchs',
     picture: 'julio.jpg',
     alternativeText: 'Churchs pointing at you',
-    selected: true,
+    selected: false,
   },
 ];
